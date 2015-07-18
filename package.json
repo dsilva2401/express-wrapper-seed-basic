@@ -10,7 +10,6 @@
     "type": "git",
     "url": "git+ssh://git@github.com/dsilva2401/express-wrapper-seed.git"
   },
-  "author": "Diego Silva <dsilva2401@gmail.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/dsilva2401/express-wrapper-seed/issues"
