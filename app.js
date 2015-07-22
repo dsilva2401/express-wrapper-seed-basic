@@ -14,12 +14,13 @@
 // Setup app
 	app.init( require('./src/settings') );
 
+
 // Setup database
 	app.addDatabase('main', require('./src/models'));
 
 
 // Setup routes
-	require('./src/routes')(app);
+	app.run( require('./src/routes') );
 
 
 // Start server
