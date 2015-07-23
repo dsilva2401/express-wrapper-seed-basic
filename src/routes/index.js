@@ -12,7 +12,7 @@ module.exports = function ( $express, $app, $database ) {
 	// Controllers
 		var auth = require('./auth')($);
 		var views = require('./views')($);
-		var basic = require('./basic')($);
+		var person = require('./person')($);
 
 	// Views
 		viewsRouter.get('/login', views.login);
@@ -23,8 +23,14 @@ module.exports = function ( $express, $app, $database ) {
 		authRouter.post('/logout', auth.logout);
 
 	// API
-		// Basic
-		apiRouter.get('/me', basic.me);
+		// Person
+		apiRouter.get('/me', person.meGet);
+		apiRouter.put('/me', person.mePut);
+		apiRouter.get('/person', person.getAll);
+		apiRouter.get('/person/:personId', person.getOne);
+		apiRouter.post('/person', person.post);
+		apiRouter.put('/person/:personId', person.put);
+		apiRouter.delete('/person/:personId', person.delete);
 	
 	// Set routers
 		$app.use( viewsRouter );
