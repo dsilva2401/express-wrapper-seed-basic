@@ -1,6 +1,6 @@
 {
   "name": "express-wrapper-seed",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Express Wrapper seed",
   "main": "app.js",
   "scripts": {

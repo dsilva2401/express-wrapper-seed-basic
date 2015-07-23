@@ -15,6 +15,10 @@
 	app.init( require('./src/settings') );
 
 
+// Setup methods
+	app.run( require('./src/methods') );
+
+
 // Setup database
 	app.addDatabase('main', require('./src/models'));
 

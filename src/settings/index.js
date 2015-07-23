@@ -30,10 +30,4 @@ module.exports = function ($app, $config, $express) {
 		else next();
 	});
 
-	// Not found page
-	$app.use(function (req, res, next) {
-		res.status(404);
-		res.end('Not found :(');
-	});
-
 }

@@ -1,6 +1,6 @@
 var Sequelize = require('sequelize');
 
-module.exports = function ($config) {
+module.exports = function ($config, $methods) {
 
 	// Database configuration
 		var dbConfig = $config.databases['main'][$config.env];
@@ -17,7 +17,12 @@ module.exports = function ($config) {
 		var Person = db.define('Person', {
 			name: Sequelize.STRING,
 			email: { type: Sequelize.STRING, unique: true }
-		});
+		},
+			{
+				classMethods: $methods.Person.Class,
+				instanceMethods: $methods.Person.Instance
+			}
+		);
 
 		var Credential = db.define('Credential', {
 			password: Sequelize.STRING
@@ -38,9 +43,18 @@ module.exports = function ($config) {
 			description: Sequelize.TEXT
 		});
 
+		var Role = db.define('Role', {
+			name: Sequelize.STRING,
+			description: Sequelize.TEXT
+		});
+
+		var PersonRole = db.define('PersonRole', {});
+
 		Credential.belongsTo( Person );
 		SessionKey.belongsTo( Person );
 		Item.belongsTo( ItemGroup );
+		PersonRole.belongsTo( Person );
+		PersonRole.belongsTo( Role );
 
 	// Sync database
 		db.sync();
