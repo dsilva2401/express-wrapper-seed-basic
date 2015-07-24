@@ -25,7 +25,9 @@ module.exports = function ($config, $methods) {
 		);
 
 		var Credential = db.define('Credential', {
-			password: Sequelize.STRING
+			username: Sequelize.STRING,
+			password: Sequelize.STRING,
+			active: Sequelize.BOOLEAN
 		});
 
 		var SessionKey = db.define('SessionKey', {
@@ -43,18 +45,27 @@ module.exports = function ($config, $methods) {
 			description: Sequelize.TEXT
 		});
 
-		var Role = db.define('Role', {
+		var DocumentType = db.define('DocumentType', {
 			name: Sequelize.STRING,
-			description: Sequelize.TEXT
+			description: Sequelize.STRING
 		});
 
-		var PersonRole = db.define('PersonRole', {});
+		var PersonDocument = db.define('PersonDocument', {
+			number: Sequelize.INTEGER
+		});
+
+		var GeoZone = db.define('GeoZone', {
+			name: Sequelize.STRING
+		});
 
 		Credential.belongsTo( Person );
 		SessionKey.belongsTo( Person );
 		Item.belongsTo( ItemGroup );
-		PersonRole.belongsTo( Person );
-		PersonRole.belongsTo( Role );
+		PersonDocument.belongsTo( Person );
+		PersonDocument.belongsTo( DocumentType );
+		GeoZone.belongsTo( GeoZone, { as: 'ParentGeoZone' } );
+		Person.belongsTo( GeoZone, { as: 'District' } )
+
 
 	// Sync database
 		db.sync();
