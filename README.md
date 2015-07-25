@@ -12,4 +12,7 @@ node app.js
 
 Database
 --------
+
+Basic tables
+
 ![Database](docs/db.jpg)
