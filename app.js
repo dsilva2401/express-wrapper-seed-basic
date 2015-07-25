@@ -11,7 +11,7 @@
 	app.config( require('./config') );
 
 
-// Setup app
+// App Settings
 	app.init( require('./src/settings') );
 
 
