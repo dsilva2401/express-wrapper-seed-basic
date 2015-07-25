@@ -1,8 +1,9 @@
-module.exports = function ($methods, $database) {
+module.exports = function ($methods, $database, $q) {
 	
 	// Dependencies
 	var $ = {};
 	$.database = $database;
+	$.q = $q;
 
 	// Person
 	$methods.Person = {};
