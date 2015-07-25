@@ -13,6 +13,6 @@ node app.js
 Database
 --------
 
-Basic tables
+Basic tables *(src/models/index.js)*
 
 ![Database](docs/db.jpg)
