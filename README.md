@@ -9,3 +9,7 @@ cd my-app
 npm install
 node app.js
 ```
+
+Database
+--------
+![Database](docs/db.jpg)
