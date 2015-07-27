@@ -40,11 +40,6 @@ module.exports = function ($config, $methods) {
 			key: Sequelize.STRING
 		});
 
-		// Type of document: DNI, Passport, etc..
-		var DocumentType = db.define('DocumentType', {
-			name: Sequelize.STRING
-		});
-
 		// Any geographic zone: Country, City, District, etc..
 		var GeoZone = db.define('GeoZone', {
 			name: Sequelize.STRING
@@ -75,6 +70,11 @@ module.exports = function ($config, $methods) {
 			active: Sequelize.BOOLEAN
 		});
 
+		// Institution: Business, 
+		var Institution = db.define('Institution', {
+			active: Sequelize.BOOLEAN
+		});
+
 		// Media data
 		var Media = db.define('Media', {
 			available: Sequelize.BOOLEAN,
@@ -83,16 +83,33 @@ module.exports = function ($config, $methods) {
 			url: Sequelize.STRING
 		});
 
+		// Multiple options group
+		var ItemGroup = db.define('ItemGroup', {
+			name: Sequelize.STRING,
+			description: Sequelize.STRING
+		});
+
+		// Options
+		var Item = db.define('Item', {
+			name: Sequelize.STRING,
+			value: Sequelize.STRING,
+			description: Sequelize.STRING
+		});
+
 
 		Credential.belongsTo( Person );
 		SessionKey.belongsTo( Person );
 		GeoZone.belongsTo( GeoZone, { as: 'ParentGeoZone' } );
 		Person.belongsTo( GeoZone, { as: 'District' } );
-		Person.belongsTo( DocumentType );
-		EmployeeType.belongsTo( EmployeeType, { as: 'ParentEmployeeType' } )
+		Person.belongsTo( Item, { as: 'DocumentType' } );
+		EmployeeType.belongsTo( EmployeeType, { as: 'ParentEmployeeType' } );
+		EmployeeType.belongsTo( Institution );
+		EmployeeRole.belongsTo( EmployeeType );
 		Employee.belongsTo( Person );
 		Employee.belongsTo( EmployeeType );
 		Employee.belongsTo( EmployeeRole );
+		Employee.belongsTo( Institution );
+		Item.belongsTo( ItemGroup );
 
 
 	// Sync database
