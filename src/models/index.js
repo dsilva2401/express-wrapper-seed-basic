@@ -46,7 +46,7 @@ module.exports = function ($config, $methods) {
 		});
 
 		// Type of employee: Seller, Boss, Secretary, etc..
-		var EmployeeType = db.define('EmployeeType', {
+		var Role = db.define('Role', {
 			name: Sequelize.STRING,
 			description: Sequelize.STRING
 		});
@@ -56,13 +56,6 @@ module.exports = function ($config, $methods) {
 			name: Sequelize.STRING,
 			description: Sequelize.STRING,
 			accessNumber: Sequelize.INTEGER
-		});
-
-		// Employee role linked to a employee type: Sellers manager, etc..
-		var EmployeeRole = db.define('EmployeeRole', {
-			name: Sequelize.STRING,
-			description: Sequelize.STRING,
-			featuresAccess: Sequelize.INTEGER
 		});
 
 		// Employee data
@@ -102,12 +95,10 @@ module.exports = function ($config, $methods) {
 		GeoZone.belongsTo( GeoZone, { as: 'ParentGeoZone' } );
 		Person.belongsTo( GeoZone, { as: 'District' } );
 		Person.belongsTo( Item, { as: 'DocumentType' } );
-		EmployeeType.belongsTo( EmployeeType, { as: 'ParentEmployeeType' } );
-		EmployeeType.belongsTo( Institution );
-		EmployeeRole.belongsTo( EmployeeType );
+		Role.belongsTo( Role, { as: 'ParentRole' } );
+		Role.belongsTo( Institution );
 		Employee.belongsTo( Person );
-		Employee.belongsTo( EmployeeType );
-		Employee.belongsTo( EmployeeRole );
+		Employee.belongsTo( Role );
 		Employee.belongsTo( Institution );
 		Item.belongsTo( ItemGroup );
 
