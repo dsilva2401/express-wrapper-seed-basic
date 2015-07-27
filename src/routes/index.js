@@ -33,13 +33,7 @@ module.exports = function ( $express, $app, $database ) {
 		apiRouter.post('/person', person.post);
 		apiRouter.put('/person/:personId', person.put);
 		apiRouter.delete('/person/:personId', person.delete);
-	
 
-		viewsRouter.get('/asd', function (req, res) {
-			// res.details = ':D';
-			res.append( 'details', ':D' )
-			res.end();
-		});
 
 	// Set routers
 		$app.use( viewsRouter );
