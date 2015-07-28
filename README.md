@@ -28,5 +28,5 @@ URL | Method | Description | Success | Error | Body params (POST, PUT) | Query p
 ----|--------|-------------|---------|-------|-------------------------|-------------
 */api/person/* | GET | Get all persons | `[persons]` | - | - | -
 */api/person/123/* | GET | Get person with id 123 | `person` | - | - | -
-*/api/person/* | POST | Register a new person | `person` | - | `{..} // person data` | full?(true/false)
+*/api/person/* | POST | Register a new person | `person` | - | `{..} // person data` | full=(true/false)
 */api/person/123/* | PUT | Update person data | `person` | - | `{..} // person data` | -
