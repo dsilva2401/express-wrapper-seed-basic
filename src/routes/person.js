@@ -11,11 +11,22 @@ module.exports = function ($) {
 	}
 
 	r.getAll = function ( req, res ) {
-		res.end('getAll');
+		Person.findByFilter( req.query ).then(function (persons) {
+			res.json( persons );
+		}).catch(function (err) {
+			console.error( err );
+			res.end();
+		});
 	}
 
 	r.getOne = function ( req, res ) {
-		res.end('getOne');
+		var personId = req.params.personId;
+		Person.findById(personId).then(function (person) {
+			res.json( person );
+		}).catch(function (err) {
+			console.error( err );
+			res.end();
+		});
 	}
 
 	r.post = function ( req, res ) {
@@ -36,11 +47,6 @@ module.exports = function ($) {
 	r.put = function ( req, res ) {
 		res.end('put');
 	}
-
-	r.delete = function ( req, res ) {
-		res.end('delete');
-	}
-
 
 	return r;
 }

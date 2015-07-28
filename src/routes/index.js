@@ -32,7 +32,6 @@ module.exports = function ( $express, $app, $database ) {
 		apiRouter.get('/person/:personId', person.getOne);
 		apiRouter.post('/person', person.post);
 		apiRouter.put('/person/:personId', person.put);
-		apiRouter.delete('/person/:personId', person.delete);
 
 
 	// Set routers

@@ -42,5 +42,16 @@ module.exports = function ($) {
 	}
 
 
+	m.findByFilter = function ( reqQuery ) {
+		var deferred = $.q.defer();
+		Person().findAll().then(function (persons) {
+			deferred.resolve(persons);
+		}).catch(function (err) {
+			deferred.reject(err);
+		});
+		return deferred.promise;
+	}
+
+
 	return m;
 }
