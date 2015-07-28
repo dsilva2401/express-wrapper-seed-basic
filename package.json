@@ -25,5 +25,10 @@
     "q": "^1.4.1",
     "sequelize": "^3.3.2",
     "sqlite3": "^3.0.9"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-shell": "^0.4.2",
+    "newman": "^1.2.17"
   }
 }

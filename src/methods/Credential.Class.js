@@ -5,6 +5,7 @@ module.exports = function ($) {
 
 	m.cipherAndRegister = function ( person, credentials ) {
 		var deferred = $.q.defer();
+		// TODO : Cipher password
 		Credential().create({
 			username: credentials.username,
 			password: credentials.password
