@@ -53,5 +53,24 @@ module.exports = function ($) {
 	}
 
 
+	m.updateDataById = function ( id, pData ) {
+		var deferred = $.q.defer();
+		delete pData.email;
+		Person().findById( id ).then(function (person) {
+			Object.keys(pData).forEach(function (k) {
+				person[k] = pData[k];
+			});
+			person.save().then(function (person) {
+				deferred.resolve(person);
+			}).catch(function (err) {
+				deferred.reject(err);
+			});
+		}).catch(function (err) {
+			deferred.reject(err);
+		})
+		return deferred.promise;
+	}
+
+
 	return m;
 }

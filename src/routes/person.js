@@ -45,7 +45,14 @@ module.exports = function ($) {
 	}
 
 	r.put = function ( req, res ) {
-		res.end('put');
+		var persondata = req.body;
+		var personId = req.params.personId;
+		Person.updateDataById( personId, persondata ).then(function (person) {
+			res.json( person );
+		}).catch(function (err) {
+			console.log( err );
+			res.end();
+		})
 	}
 
 	return r;

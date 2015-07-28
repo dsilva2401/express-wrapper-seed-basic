@@ -24,8 +24,9 @@ module.exports = function ( $express, $app, $database ) {
 		authRouter.post('/logout', auth.logout);
 
 	// API
-		// Person
+		// Middle
 		apiRouter.all('/*', middle.all);
+		// Person
 		apiRouter.get('/me', person.meGet);
 		apiRouter.put('/me', person.mePut);
 		apiRouter.get('/person', person.getAll);
