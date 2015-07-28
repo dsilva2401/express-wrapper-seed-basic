@@ -10,4 +10,8 @@ module.exports = function ($methods, $database, $q) {
 	$methods.Person.Class = require('./Person.Class')($);
 	$methods.Person.Instance = require('./Person.Instance')($);
 
+	// Credential
+	$methods.Credential = {};
+	$methods.Credential.Class = require('./Credential.Class')($);
+
 }

@@ -33,7 +33,11 @@ module.exports = function ($config, $methods) {
 			username: Sequelize.STRING,
 			password: Sequelize.STRING,
 			active: Sequelize.BOOLEAN
-		});
+		},
+			{
+				classMethods: $methods.Credential.Class,
+			}
+		);
 
 		// User session key
 		var SessionKey = db.define('SessionKey', {
