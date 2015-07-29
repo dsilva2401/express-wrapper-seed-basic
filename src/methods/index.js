@@ -5,6 +5,9 @@ module.exports = function ($methods, $database, $q) {
 	$.database = $database;
 	$.q = $q;
 
+	// Response
+	$methods.Response = require('./Response')($);
+
 	// Person
 	$methods.Person = {};
 	$methods.Person.Class = require('./Person.Class')($);

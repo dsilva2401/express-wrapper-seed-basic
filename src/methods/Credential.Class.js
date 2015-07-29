@@ -6,16 +6,24 @@ module.exports = function ($) {
 	m.cipherAndRegister = function ( person, credentials ) {
 		var deferred = $.q.defer();
 		// TODO : Cipher password
-		Credential().create({
+		var createPromise = Credential().create({
 			username: credentials.username,
 			password: credentials.password
-		}).then(function (credential) {
-			credential.setPerson( person ).then(function () {
+		});
+		// Success
+		createPromise.then(function (credential) {
+			var setCredentialPromise = credential.setPerson( person );
+			// Success
+			setCredentialPromise.then(function () {
 				deferred.resolve( person );
-			}).catch(function ( err ) {
+			})
+			// Error
+			setCredentialPromise.catch(function ( err ) {
 				deferred.reject( err );
 			});
-		}).catch(function ( err ) {
+		})
+		// Error
+		createPromise.catch(function ( err ) {
 			deferred.reject( err );
 		});
 		return deferred.promise;

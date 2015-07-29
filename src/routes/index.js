@@ -1,8 +1,9 @@
-module.exports = function ( $express, $app, $database ) {
+module.exports = function ( $express, $app, $database, $methods ) {
 
 	// Controllers dependencies
 		var $ = {};
 		$.database = $database;
+		$.methods = $methods;
 
 	// Routes
 		var viewsRouter = $express.Router();
@@ -10,29 +11,31 @@ module.exports = function ( $express, $app, $database ) {
 		var apiRouter = $express.Router();
 
 	// Controllers
-		var middle = require('./middle')($);
-		var auth = require('./auth')($);
-		var views = require('./views')($);
-		var person = require('./person')($);
+		var Middle = require('./Middle')($);
+		var Auth = require('./Auth')($);
+		var Views = require('./Views')($);
+		var Person = require('./Person')($);
 
 	// Views
-		viewsRouter.get('/login', views.login);
-		viewsRouter.get('/register', views.register)
+		viewsRouter.get('/login', Views.login);
+		viewsRouter.get('/register', Views.register)
 
 	// Auth
-		authRouter.post('/login', auth.login);
-		authRouter.post('/logout', auth.logout);
+		authRouter.post('/login', Auth.login);
+		authRouter.post('/logout', Auth.logout);
 
 	// API
-		// Middle
-		apiRouter.all('/*', middle.all);
+		// Middle pre
+		apiRouter.all('/*', Middle.pre);
 		// Person
-		apiRouter.get('/me', person.meGet);
-		apiRouter.put('/me', person.mePut);
-		apiRouter.get('/person', person.getAll);
-		apiRouter.get('/person/:personId', person.getOne);
-		apiRouter.post('/person', person.post);
-		apiRouter.put('/person/:personId', person.put);
+		apiRouter.get('/me', Person.meGet);
+		apiRouter.put('/me', Person.mePut);
+		apiRouter.get('/person', Person.getAll);
+		apiRouter.get('/person/:personId', Person.getOne);
+		apiRouter.post('/person', Person.post);
+		apiRouter.put('/person/:personId', Person.put);
+		// Middle post
+		apiRouter.all('/*', Middle.post);
 
 
 	// Set routers
