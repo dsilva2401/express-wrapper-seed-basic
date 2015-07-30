@@ -23,4 +23,8 @@ module.exports = function ($methods, $database, $q, $config, $global) {
 	$methods.SessionKey = {};
 	$methods.SessionKey.Class = require('./SessionKey.Class')($);
 
+	// GeoZone
+	$methods.GeoZone = {};
+	$methods.GeoZone.Class = require('./GeoZone.Class')($);
+
 }

@@ -16,7 +16,6 @@ module.exports = function ($) {
 		options = options || {};
 		var callback = options.callback || function () {}
 		return function ( err ) {
-			console.log( $.config );
 			// Dev env block
 			if ( $.config.env == 'dev' ) {
 				res.json( err );
