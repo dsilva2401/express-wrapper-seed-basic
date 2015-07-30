@@ -1,9 +1,11 @@
-module.exports = function ($methods, $database, $q) {
+module.exports = function ($methods, $database, $q, $config, $global) {
 	
 	// Dependencies
 	var $ = {};
 	$.database = $database;
 	$.q = $q;
+	$.config = $config;
+	$.global = $global;
 
 	// Response
 	$methods.Response = require('./Response')($);

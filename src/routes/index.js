@@ -1,9 +1,10 @@
-module.exports = function ( $express, $app, $database, $methods ) {
+module.exports = function ( $express, $app, $database, $methods, $config ) {
 
 	// Controllers dependencies
 		var $ = {};
 		$.database = $database;
 		$.methods = $methods;
+		$.config = $config;
 
 	// Routes
 		var viewsRouter = $express.Router();

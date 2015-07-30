@@ -1,5 +1,6 @@
 module.exports = function ($) {
 	var m = {};
+	var $Error = $.global.Error;
 	var Person = function () { return $.database.main.models.Person; }
 	var Credential = function () { return $.database.main.models.Credential; }
 
@@ -10,6 +11,15 @@ module.exports = function ($) {
 			username: personData.username,
 			password: personData.password
 		};
+
+		// Params validation
+		if (!credentials.username || !credentials.password) {
+			var missing = [];
+			if (!credentials.username) missing.push( 'username' );
+			if (!credentials.password) missing.push( 'password' );
+			deferred.reject( new $Error().missingParameters(missing) );
+		}
+
 		Person().create({
 			name: personData.name,
 			email: personData.email,
@@ -21,7 +31,12 @@ module.exports = function ($) {
 				deferred.reject( err );
 			});
 		}).catch(function ( err ) {
-			deferred.reject( err );
+			// Email already registered validation
+			if ( err.name == 'SequelizeUniqueConstraintError' ) {
+				deferred.reject( new $Error(err).emailAlreadyRegistered() );
+			} else {
+				deferred.reject( err );
+			}
 		});
 		return deferred.promise;
 	}

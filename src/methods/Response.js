@@ -15,8 +15,12 @@ module.exports = function ($) {
 		options = options || {};
 		var callback = options.callback || function () {}
 		return function ( err ) {
+			console.log( $.config );
+			if ( $.config.env == 'dev' ) {
+				res.json( err );
+				console.error( err );
+			}
 			callback( err );
-			console.error( err );
 			res.status( 500 );
 			next();
 		}
