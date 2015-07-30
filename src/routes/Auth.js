@@ -9,6 +9,8 @@ module.exports = function ($) {
 		var username = req.body.username;
 		var password = req.body.password;
 		var findPromise = Credential.verifyCredentials(username, password);
+		// Delete current session
+		SessionKey.deleteCurrentSession(req);
 		// Success
 		findPromise.then(function (uData) {
 			var personPromise = Person.findById(uData.PersonId);
@@ -36,7 +38,16 @@ module.exports = function ($) {
 	}
 
 	r.logout = function (req, res) {
-		res.end('logout');
+		var deletePromise = SessionKey.deleteCurrentSession(req);
+		// Success
+		deletePromise.then(
+			Response.success( req, res )
+		);
+		// Error
+		deletePromise.catch(
+			Response.error( req, res )
+		);
+
 	}
 
 	return r;

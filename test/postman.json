@@ -10,7 +10,8 @@
 			"description": "",
 			"write": true,
 			"order": [
-				"47f3629d-6141-ab0f-b533-fcf9fad7d7fa"
+				"47f3629d-6141-ab0f-b533-fcf9fad7d7fa",
+				"a6de786c-7450-fb81-776d-640705dd0e7b"
 			],
 			"collection": "1b748974-cf65-e136-c242-c251da3f3687",
 			"owner": "30981",
@@ -29,7 +30,8 @@
 				"3adb44c8-4e21-ab1a-b6aa-281ea32542ef",
 				"1fbe9f79-a4b9-895d-a147-dc4c9d06592f",
 				"f3f5e206-05b1-163d-3dc7-fba0efbe3cdd",
-				"a53330cc-ed1b-5106-b5cf-cf3ca5cc3eab"
+				"a53330cc-ed1b-5106-b5cf-cf3ca5cc3eab",
+				"4c6ad73b-b25f-da08-1082-dfd8435aca41"
 			],
 			"collection": "1b748974-cf65-e136-c242-c251da3f3687",
 			"owner": "30981",
@@ -62,7 +64,9 @@
 			"tests": "",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"folder": "940d3a96-592f-3c50-e2e9-46b51e33ff5e"
+			"folder": "940d3a96-592f-3c50-e2e9-46b51e33ff5e",
+			"isFromCollection": true,
+			"collectionRequestId": "1fbe9f79-a4b9-895d-a147-dc4c9d06592f"
 		},
 		{
 			"id": "3adb44c8-4e21-ab1a-b6aa-281ea32542ef",
@@ -83,7 +87,9 @@
 			"tests": "",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"folder": "940d3a96-592f-3c50-e2e9-46b51e33ff5e"
+			"folder": "940d3a96-592f-3c50-e2e9-46b51e33ff5e",
+			"isFromCollection": true,
+			"collectionRequestId": "3adb44c8-4e21-ab1a-b6aa-281ea32542ef"
 		},
 		{
 			"id": "47f3629d-6141-ab0f-b533-fcf9fad7d7fa",
@@ -119,7 +125,37 @@
 			"helperAttributes": {},
 			"folder": "a39939dd-77f8-6c7b-5fdb-2ff2e05b564a",
 			"isFromCollection": true,
-			"collectionRequestId": "8d8544e3-d279-98f1-d775-bc597f841689"
+			"collectionRequestId": "47f3629d-6141-ab0f-b533-fcf9fad7d7fa"
+		},
+		{
+			"id": "4c6ad73b-b25f-da08-1082-dfd8435aca41",
+			"headers": "",
+			"url": "http://localhost:3000/api/me",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "PUT",
+			"collectionId": "1b748974-cf65-e136-c242-c251da3f3687",
+			"data": [
+				{
+					"key": "name",
+					"value": "Die Sil",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "Me update",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1438277568834,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "940d3a96-592f-3c50-e2e9-46b51e33ff5e",
+			"isFromCollection": true,
+			"collectionRequestId": "4c6ad73b-b25f-da08-1082-dfd8435aca41"
 		},
 		{
 			"id": "6b91f167-01d9-63a8-c2b2-6fe62e6465c1",
@@ -159,7 +195,9 @@
 			"tests": "",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"folder": "940d3a96-592f-3c50-e2e9-46b51e33ff5e"
+			"folder": "940d3a96-592f-3c50-e2e9-46b51e33ff5e",
+			"isFromCollection": true,
+			"collectionRequestId": "6b91f167-01d9-63a8-c2b2-6fe62e6465c1"
 		},
 		{
 			"id": "a53330cc-ed1b-5106-b5cf-cf3ca5cc3eab",
@@ -180,7 +218,45 @@
 			"tests": "",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"folder": "940d3a96-592f-3c50-e2e9-46b51e33ff5e"
+			"folder": "940d3a96-592f-3c50-e2e9-46b51e33ff5e",
+			"isFromCollection": true,
+			"collectionRequestId": "a53330cc-ed1b-5106-b5cf-cf3ca5cc3eab"
+		},
+		{
+			"id": "a6de786c-7450-fb81-776d-640705dd0e7b",
+			"headers": "",
+			"url": "http://localhost:3000/auth/logout",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "POST",
+			"collectionId": "1b748974-cf65-e136-c242-c251da3f3687",
+			"data": [
+				{
+					"key": "password",
+					"value": "pwd123",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "username",
+					"value": "dsilva2401",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "Logout",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1438280708075,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "a39939dd-77f8-6c7b-5fdb-2ff2e05b564a",
+			"isFromCollection": true,
+			"collectionRequestId": "a6de786c-7450-fb81-776d-640705dd0e7b"
 		},
 		{
 			"id": "e12ce640-ad72-f254-47cf-b79de7379625",
@@ -232,7 +308,9 @@
 			"tests": "",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"folder": "940d3a96-592f-3c50-e2e9-46b51e33ff5e"
+			"folder": "940d3a96-592f-3c50-e2e9-46b51e33ff5e",
+			"isFromCollection": true,
+			"collectionRequestId": "e12ce640-ad72-f254-47cf-b79de7379625"
 		},
 		{
 			"id": "f3f5e206-05b1-163d-3dc7-fba0efbe3cdd",
@@ -258,7 +336,10 @@
 			"name": "Update person data",
 			"description": "",
 			"collectionId": "1b748974-cf65-e136-c242-c251da3f3687",
-			"responses": []
+			"responses": [],
+			"folder": "940d3a96-592f-3c50-e2e9-46b51e33ff5e",
+			"isFromCollection": true,
+			"collectionRequestId": "f3f5e206-05b1-163d-3dc7-fba0efbe3cdd"
 		}
 	]
 }

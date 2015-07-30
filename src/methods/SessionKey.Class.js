@@ -76,6 +76,23 @@ module.exports = function ($) {
 		return deferred.promise;
 	}
 
+	m.deleteCurrentSession = function (req) {
+		var deferred = $.q.defer();
+		var skey = req.cookies.skey;
+		if (!skey) deferred.resolve({});
+		var destroyPromise = SessionKey().destroy({
+			where: { key: skey }
+		});
+		// Success
+		destroyPromise.then(function () {
+			deferred.resolve({});
+		});
+		// Error
+		destroyPromise.catch(function (err) {
+			deferred.reject(err);
+		});
+		return deferred.promise;
+	}
 
 	return m;
 }

@@ -9,7 +9,7 @@ module.exports = function ($) {
 		// Success
 		personPromise.then(
 			Response.success( req, res, next )
-		)
+		);
 		// Error
 		personPromise.catch(
 			Response.error( req, res, next )
@@ -17,7 +17,27 @@ module.exports = function ($) {
 	}
 
 	r.mePut = function ( req, res, next ) {
-		next();
+		var personPromise = SessionKey.getCurrentUser(req);
+		var newData = req.body;
+		// Success 
+		personPromise.then(function (person) {
+			Object.keys(newData).forEach(function (attr) {
+				person[attr] = newData[attr];
+			});
+			var savePromise = person.save();
+			// Success
+			savePromise.then(
+				Response.success( req, res, next )
+			);
+			// Error
+			savePromise.catch(
+				Response.error( req, res, next )
+			);
+		});
+		// Error
+		personPromise.catch(
+			Response.error( req, res, next )
+		);
 	}
 
 	r.getAll = function ( req, res, next ) {
