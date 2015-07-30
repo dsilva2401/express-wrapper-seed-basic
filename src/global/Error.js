@@ -23,6 +23,24 @@ module.exports = function ($) {
 			return fError;
 		}
 
+		// Invalid credentials
+		m.invalidCredentials = function () {
+			fError.details = {
+				en: 'Invalid credentials',
+				es: 'Credenciales inválidas'
+			}
+			return fError;
+		}
+
+		// Invalid session
+		m.invalidSession = function () {
+			fError.details = {
+				en: 'Invalid session',
+				es: 'Sesión  inválida'
+			}
+			return fError;
+		}
+
 
 		return m;
 	}

@@ -30,19 +30,23 @@ module.exports = function ($config, $methods) {
 
 		// User credentials
 		var Credential = db.define('Credential', {
-			username: Sequelize.STRING,
+			username: { type: Sequelize.STRING, unique: true },
 			password: Sequelize.STRING,
 			active: Sequelize.BOOLEAN
 		},
 			{
-				classMethods: $methods.Credential.Class,
+				classMethods: $methods.Credential.Class
 			}
 		);
 
 		// User session key
 		var SessionKey = db.define('SessionKey', {
-			key: Sequelize.STRING
-		});
+			key: { type: Sequelize.STRING, unique: true },
+		},
+			{
+				classMethods: $methods.SessionKey.Class
+			}
+		);
 
 		// Any geographic zone: Country, City, District, etc..
 		var GeoZone = db.define('GeoZone', {

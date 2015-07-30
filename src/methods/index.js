@@ -19,4 +19,8 @@ module.exports = function ($methods, $database, $q, $config, $global) {
 	$methods.Credential = {};
 	$methods.Credential.Class = require('./Credential.Class')($);
 
+	// Session key
+	$methods.SessionKey = {};
+	$methods.SessionKey.Class = require('./SessionKey.Class')($);
+
 }

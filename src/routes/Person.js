@@ -1,10 +1,19 @@
 module.exports = function ($) {
 	var r = {};
 	var Person = $.database.main.models.Person;
+	var SessionKey = $.database.main.models.SessionKey;
 	var Response = $.methods.Response;
 
 	r.meGet = function ( req, res, next ) {
-		next();
+		var personPromise = SessionKey.getCurrentUser(req);
+		// Success
+		personPromise.then(
+			Response.success( req, res, next )
+		)
+		// Error
+		personPromise.catch(
+			Response.error( req, res, next )
+		);
 	}
 
 	r.mePut = function ( req, res, next ) {

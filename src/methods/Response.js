@@ -7,7 +7,8 @@ module.exports = function ($) {
 		return function (data) {
 			callback( data );
 			res.json( data );
-			next();
+			if (next) next();
+			else res.end();
 		}
 	}
 
@@ -16,13 +17,16 @@ module.exports = function ($) {
 		var callback = options.callback || function () {}
 		return function ( err ) {
 			console.log( $.config );
+			// Dev env block
 			if ( $.config.env == 'dev' ) {
 				res.json( err );
 				console.error( err );
 			}
-			callback( err );
 			res.status( 500 );
-			next();
+			callback( err );
+			// Resolve response
+			if (next) next();
+			else res.end();
 		}
 	}
 
