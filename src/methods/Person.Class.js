@@ -20,17 +20,26 @@ module.exports = function ($) {
 			deferred.reject( new $Error().missingParameters(missing) );
 		}
 
-		Person().create({
+		// Promise block
+		var createPromise = Person().create({
 			name: personData.name,
 			email: personData.email,
 			sex: personData.sex
-		}).then(function ( person ) {
-			Credential().cipherAndRegister( person, credentials ).then(function () {
+		});
+		// Success
+		createPromise.then(function ( person ) {
+			var cipherPromise = Credential().cipherAndRegister( person, credentials );
+			// Success
+			cipherPromise.then(function () {
 				deferred.resolve( person );
-			}).catch(function ( err ) {
+			})
+			// Error
+			cipherPromise.catch(function ( err ) {
 				deferred.reject( err );
 			});
-		}).catch(function ( err ) {
+		});
+		// Error
+		createPromise.catch(function ( err ) {
 			// Email already registered validation
 			if ( err.name == 'SequelizeUniqueConstraintError' ) {
 				deferred.reject( new $Error(err).emailAlreadyRegistered() );
@@ -38,19 +47,24 @@ module.exports = function ($) {
 				deferred.reject( err );
 			}
 		});
+
 		return deferred.promise;
 	}
 
 
 	m.basicRegister = function ( personData ) {
 		var deferred = $.q.defer();
-		Person().create({
+		var createPromise = Person().create({
 			name: personData.name,
 			email: personData.email,
 			sex: personData.sex
-		}).then(function ( personData ) {
+		});
+		// Success
+		createPromise.then(function ( personData ) {
 			deferred.resolve(personData);
-		}).catch(function ( err ) {
+		});
+		// Error
+		createPromise.catch(function ( err ) {
 			deferred.reject(err);
 		});
 		return deferred.promise;
@@ -59,9 +73,13 @@ module.exports = function ($) {
 
 	m.findByFilter = function ( reqQuery ) {
 		var deferred = $.q.defer();
-		Person().findAll().then(function (persons) {
+		var findPromise = Person().findAll();
+		// Success
+		findPromise.then(function (persons) {
 			deferred.resolve(persons);
-		}).catch(function (err) {
+		});
+		// Error
+		findPromise.catch(function (err) {
 			deferred.reject(err);
 		});
 		return deferred.promise;
@@ -71,16 +89,24 @@ module.exports = function ($) {
 	m.updateDataById = function ( id, pData ) {
 		var deferred = $.q.defer();
 		delete pData.email;
-		Person().findById( id ).then(function (person) {
+		var findPromise = Person().findById( id );
+		// Success
+		findPromise.then(function (person) {
 			Object.keys(pData).forEach(function (k) {
 				person[k] = pData[k];
 			});
-			person.save().then(function (person) {
+			var savePromise = person.save();
+			// Success
+			savePromise.then(function (person) {
 				deferred.resolve(person);
-			}).catch(function (err) {
+			});
+			// Error
+			savePromise.catch(function (err) {
 				deferred.reject(err);
 			});
-		}).catch(function (err) {
+		});
+		// Error
+		findPromise.catch(function (err) {
 			deferred.reject(err);
 		})
 		return deferred.promise;
