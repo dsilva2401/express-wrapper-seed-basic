@@ -39,3 +39,8 @@ URL | Method | Description | Success | Error | Body params (POST, PUT) | Query p
 */api/person/123/* | PUT | Update person data | `person` | - | `{..} // person data` | -
 */api/me/* | GET | Get logged user data | `person` | - | - | -
 */api/me/* | PUT | Update logged user data | `person` | - | `{..} // person data` | -
+*/api/geozone/* | GET | Get all root geozones | `[geozones]` | - | - | -
+*/api/geozone/123/* | GET | Get all geozones from geozone 123 | `[geozones]` | - | - | -
+*/api/geozone/* | POST | Create a root geozone | `geozone` | - | `{..} // geozone data` | -
+*/api/geozone/123/* | PUT | Update geozone | `geozone` | - | `{..} // geozone data` | -
+*/api/geozone/123/* | DELETE | Delete geozone | `1` or `0` | - | - | -
