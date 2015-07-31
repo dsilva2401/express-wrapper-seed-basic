@@ -60,7 +60,8 @@ module.exports = function ($config, $methods) {
 		// Type of employee: Seller, Boss, Secretary, etc..
 		var Role = db.define('Role', {
 			name: Sequelize.STRING,
-			description: Sequelize.STRING
+			description: Sequelize.STRING,
+			featuresAccess: Sequelize.INTEGER
 		});
 
 		// App feature: Manage sellers, Create coins, Manage logs, etc..
