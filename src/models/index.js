@@ -93,7 +93,11 @@ module.exports = function ($config, $methods) {
 		var ItemGroup = db.define('ItemGroup', {
 			name: Sequelize.STRING,
 			description: Sequelize.STRING
-		});
+		},
+			{
+				classMethods: $methods.ItemGroup.Class
+			}
+		);
 
 		// Options
 		var Item = db.define('Item', {

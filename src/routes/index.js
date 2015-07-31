@@ -17,6 +17,7 @@ module.exports = function ( $express, $app, $database, $methods, $config ) {
 		var Views = require('./Views')($);
 		var Person = require('./Person')($);
 		var GeoZone = require('./GeoZone')($);
+		var ItemGroup = require('./ItemGroup')($);
 
 	// Views
 		viewsRouter.get('/login', Views.login);
@@ -43,6 +44,12 @@ module.exports = function ( $express, $app, $database, $methods, $config ) {
 		apiRouter.post('/geozone', GeoZone.post);
 		apiRouter.post('/geozone/:geozoneId', GeoZone.post);
 		apiRouter.delete('/geozone/:geozoneId', GeoZone.delete);
+		// Item groups
+		apiRouter.get('/item-group', ItemGroup.getAll);
+		apiRouter.get('/item-group/:itemgroupId', ItemGroup.getOne);
+		apiRouter.put('/item-group/:itemgroupId', ItemGroup.put);
+		apiRouter.post('/item-group', ItemGroup.post);
+		apiRouter.delete('/item-group/:itemgroupId', ItemGroup.delete);
 		// Middle post
 		apiRouter.all('/*', Middle.post);
 

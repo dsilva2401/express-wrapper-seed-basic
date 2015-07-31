@@ -27,4 +27,8 @@ module.exports = function ($methods, $database, $q, $config, $global) {
 	$methods.GeoZone = {};
 	$methods.GeoZone.Class = require('./GeoZone.Class')($);
 
+	// ItemGroup
+	$methods.ItemGroup = {};
+	$methods.ItemGroup.Class = require('./ItemGroup.Class')($);
+
 }

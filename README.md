@@ -44,3 +44,8 @@ URL | Method | Description | Success | Error | Body params (POST, PUT) | Query p
 */api/geozone/* | POST | Create a root geozone | `geozone` | - | `{..} // geozone data` | -
 */api/geozone/123/* | PUT | Update geozone | `geozone` | - | `{..} // geozone data` | -
 */api/geozone/123/* | DELETE | Delete geozone | `1` or `0` | - | - | -
+*/api/item-group/* | GET | Get all item-groups | `[item-groups]` | - | - | -
+*/api/item-group/123/* | GET | Get item-group with id 123 | `item-group` | - | - | -
+*/api/item-group/* | POST | Register a new item-group | `item-group` | - | `{..} // item-group data` | -
+*/api/item-group/123/* | PUT | Update item-group data | `item-group` | - | `{..} // item-group data` | -
+*/api/item-group/123/* | DELETE | Delete item-group | `1` or `0` | - | - | -
