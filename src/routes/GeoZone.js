@@ -5,8 +5,10 @@ module.exports = function ($) {
 
 
 	r.get = function (req, res, next) {
-		var geozoneId = req.params.geozoneId;
-		var findPromise = GeoZone.findAll();
+		var geozoneId = req.params.geozoneId || null;
+		var findPromise = GeoZone.findAll({
+			where: { ParentGeoZoneId: geozoneId }
+		});
 		// Success
 		findPromise.then(
 			Response.success( req, res, next )
@@ -18,7 +20,20 @@ module.exports = function ($) {
 	}
 
 	r.post = function (req, res, next) {
-		next();
+		var parentId = req.params.geozoneId || null;
+		var geozoneData = req.body;
+		var createPromise = GeoZone.create({
+			name: geozoneData.name,
+			ParentGeoZoneId: parentId
+		});
+		// Success
+		createPromise.then(
+			Response.success( req, res, next )
+		);
+		// Error
+		createPromise.catch(
+			Response.error( req, res, next )
+		);
 	}
 
 	r.put = function (req, res, next) {
