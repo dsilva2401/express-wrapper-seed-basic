@@ -37,11 +37,32 @@ module.exports = function ($) {
 	}
 
 	r.put = function (req, res, next) {
-		next();
+		var geozoneData = req.body;
+		var geozoneId = req.params.geozoneId;
+		var updatePromise = GeoZone.updateDataById( geozoneId, geozoneData );
+		// Success
+		updatePromise.then(
+			Response.success( req, res, next )
+		);
+		// Error
+		updatePromise.catch(
+			Response.error( req, res, next )
+		);
 	}
 
 	r.delete = function (req, res, next) {
-		next();
+		var geozoneId = req.params.geozoneId;
+		var destroyPromise = GeoZone.destroy({
+			where: { id: geozoneId }
+		});
+		// Success
+		destroyPromise.then(
+			Response.success( req, res, next )
+		);
+		// Error
+		destroyPromise.catch(
+			Response.error( req, res, next )
+		);
 	}
 	
 	

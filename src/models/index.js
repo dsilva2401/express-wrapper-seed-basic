@@ -51,7 +51,11 @@ module.exports = function ($config, $methods) {
 		// Any geographic zone: Country, City, District, etc..
 		var GeoZone = db.define('GeoZone', {
 			name: Sequelize.STRING
-		});
+		},
+			{
+				classMethods: $methods.GeoZone.Class
+			}
+		);
 
 		// Type of employee: Seller, Boss, Secretary, etc..
 		var Role = db.define('Role', {
