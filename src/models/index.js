@@ -23,8 +23,7 @@ module.exports = function ($config, $methods) {
 			sex: Sequelize.CHAR
 		},
 			{
-				classMethods: $methods.Person.Class,
-				instanceMethods: $methods.Person.Instance
+				classMethods: $methods.Person.Class
 			}
 		);
 
@@ -102,9 +101,14 @@ module.exports = function ($config, $methods) {
 		// Options
 		var Item = db.define('Item', {
 			name: Sequelize.STRING,
-			value: Sequelize.STRING,
 			description: Sequelize.STRING
-		});
+		},
+			{
+				classMethods: $methods.Item.Class
+			}
+		);
+
+
 
 
 		Credential.belongsTo( Person );

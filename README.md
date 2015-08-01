@@ -49,3 +49,8 @@ URL | Method | Description | Success | Error | Body params (POST, PUT) | Query p
 */api/item-group/* | POST | Register a new item-group | `item-group` | - | `{..} // item-group data` | -
 */api/item-group/123/* | PUT | Update item-group data | `item-group` | - | `{..} // item-group data` | -
 */api/item-group/123/* | DELETE | Delete item-group | `1` or `0` | - | - | -
+*/api/item-group/123/item/* | GET | Get all items inside item-group 123 | `[item]` | - | - | -
+*/api/item/123/* | GET | Get items 123 | `item` | - | - | -
+*/api/item-group/123/item/* | POST | Register a new item inside igroup 123 | `item-group` | - | `{..} // item data` | -
+*/api/item/123/* | PUT | Update item | `item` | - | `{..} // item data` | -
+*/api/item/123/* | DELETE | Delete item | `1` or `0` | - | - | -

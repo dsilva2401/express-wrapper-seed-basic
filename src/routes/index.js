@@ -18,6 +18,7 @@ module.exports = function ( $express, $app, $database, $methods, $config ) {
 		var Person = require('./Person')($);
 		var GeoZone = require('./GeoZone')($);
 		var ItemGroup = require('./ItemGroup')($);
+		var Item = require('./Item')($);
 
 	// Views
 		viewsRouter.get('/login', Views.login);
@@ -50,6 +51,12 @@ module.exports = function ( $express, $app, $database, $methods, $config ) {
 		apiRouter.put('/item-group/:itemgroupId', ItemGroup.put);
 		apiRouter.post('/item-group', ItemGroup.post);
 		apiRouter.delete('/item-group/:itemgroupId', ItemGroup.delete);
+		// Item
+		apiRouter.get('/item-group/:itemgroupId/item', Item.getAll);
+		apiRouter.get('/item/:itemId', Item.getOne);
+		apiRouter.put('/item/:itemId', Item.put);
+		apiRouter.post('/item-group/:itemgroupId/item', Item.post);
+		apiRouter.delete('/item/:itemId', Item.delete);
 		// Middle post
 		apiRouter.all('/*', Middle.post);
 

@@ -6,6 +6,7 @@ module.exports = function ($) {
 	m.updateDataById = function ( id, gData ) {
 		var deferred = $.q.defer();
 		var findPromise = GeoZone().findById( id );
+		// TODO : Implement verification
 		// Success
 		findPromise.then(function (geozone) {
 			Object.keys(gData).forEach(function (k) {

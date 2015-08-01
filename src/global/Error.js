@@ -41,6 +41,15 @@ module.exports = function ($) {
 			return fError;
 		}
 
+		// Invalid item group
+		m.invalidItemGroup = function () {
+			fError.details = {
+				en: 'Invalid item group',
+				es: 'Grupo de item inválido'
+			}
+			return fError;
+		}
+
 
 		return m;
 	}

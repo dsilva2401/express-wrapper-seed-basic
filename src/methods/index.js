@@ -13,7 +13,6 @@ module.exports = function ($methods, $database, $q, $config, $global) {
 	// Person
 	$methods.Person = {};
 	$methods.Person.Class = require('./Person.Class')($);
-	$methods.Person.Instance = require('./Person.Instance')($);
 
 	// Credential
 	$methods.Credential = {};
@@ -30,5 +29,9 @@ module.exports = function ($methods, $database, $q, $config, $global) {
 	// ItemGroup
 	$methods.ItemGroup = {};
 	$methods.ItemGroup.Class = require('./ItemGroup.Class')($);
+
+	// Item
+	$methods.Item = {};
+	$methods.Item.Class = require('./Item.Class')($);
 
 }
