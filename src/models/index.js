@@ -114,7 +114,8 @@ module.exports = function ($config, $methods) {
 			duration: Sequelize.INTEGER,
 			route: Sequelize.STRING,
 			ip: Sequelize.STRING,
-			method: Sequelize.STRING
+			method: Sequelize.STRING,
+			PersonId: Sequelize.INTEGER
 		});
 
 
