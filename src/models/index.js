@@ -109,6 +109,14 @@ module.exports = function ($config, $methods) {
 		);
 
 
+		// Time of requests
+		var TimeRequestLog = db.define('TimeRequestLog', {
+			duration: Sequelize.INTEGER,
+			route: Sequelize.STRING,
+			ip: Sequelize.STRING,
+			method: Sequelize.STRING
+		});
+
 
 
 		Credential.belongsTo( Person );
