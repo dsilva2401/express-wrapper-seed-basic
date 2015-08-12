@@ -18,6 +18,7 @@
 // Setup global
 	app.run( require('./src/global') );
 
+
 // Setup methods
 	app.run( require('./src/methods') );
 

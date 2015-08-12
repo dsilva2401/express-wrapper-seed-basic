@@ -8,7 +8,7 @@ gulp.task('run-services', shell.task([
 ]));
 
 // Restart server
-gulp.task('restart-server', shell.task([
+gulp.task('reset-server', shell.task([
   'rm data/database.sqlite',
   'node app.js'
 ]));
